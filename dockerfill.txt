@@ -1,0 +1,33 @@
+# ===== Base =====
+FROM python:3.11-slim
+
+# نظام أنظف + تحسينات تشغيل بايثون
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+# مكتبات نظام مطلوبة لبعض الحِزم (مثل OpenCV)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 libglib2.0-0 && \
+    rm -rf /var/lib/apt/lists/*
+
+# ===== App =====
+WORKDIR /app
+
+# تثبيت المتطلبات أولاً (استفادة من طبقات الدوكر)
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# نسخ الكود
+COPY backend /app
+
+# مجلد البيانات (لقاعدة SQLite وملفات PDF إن رغبتِ)
+RUN mkdir -p /app/data
+ENV SEASONDIY_DB_PATH=/app/data/seasondiy.db
+
+# (اختياري) توثيق المنفذ الافتراضي محليًا
+EXPOSE 8000
+
+# ===== Run =====
+# Render يمرّر PORT تلقائيًا؛ لو غير موجود نستخدم 8000 محليًا
+CMD ["sh","-c","uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
