@@ -7,7 +7,6 @@ services:
     autoDeploy: true
     envVars:
       - key: SEASONDIY_ALLOWED_ORIGINS
-        # أثناء التجربة خليه يسمح للواجهة المحلية + دومين فيرسل لاحقًا
         value: http://localhost:3000,https://your-vercel-domain.vercel.app
       - key: SEASONDIY_DB_PATH
         value: /app/data/seasondiy.db
