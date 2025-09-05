@@ -1,8 +1,0 @@
-__pycache__/
-*.pyc
-.venv/
-data/
-node_modules/
-frontend/
-.git
-.gitignore

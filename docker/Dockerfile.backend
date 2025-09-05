@@ -53,3 +53,26 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 
 # Run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# خفيف وحديث
+FROM python:3.11-slim
+
+# تثبيت تبعيات النظام الأساسية (اختياري لكن مفيد لـPillow/ReportLab)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# تثبيت بايثون باكدجات
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# نسخ كود الباك-إند بالكامل (يشمل templates/assets)
+COPY backend/ /app/
+
+# Render يمرر متغير PORT تلقائياً
+ENV PORT=8000
+EXPOSE 8000
+
+# تشغيل uvicorn على كل الواجهات وعلى المنفذ الصحيح
+CMD bash -lc "uvicorn app.main:app --host 0.0.0.0 --port $PORT"

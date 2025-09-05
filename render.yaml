@@ -3,15 +3,13 @@ services:
     name: seasondiy-api
     env: docker
     dockerfilePath: docker/Dockerfile.backend
-    plan: starter
-    autoDeploy: true
+    healthCheckPath: /healthz
     envVars:
-      - key: SEASONDIY_ALLOWED_ORIGINS
-        value: http://localhost:3000,https://your-vercel-domain.vercel.app
       - key: SEASONDIY_DB_PATH
         value: /app/data/seasondiy.db
+      - key: SEASONDIY_ALLOWED_ORIGINS
+        value: http://localhost:3000
     disk:
-      name: seasondiy-data
+      name: data
       mountPath: /app/data
       sizeGB: 1
-    healthCheckPath: /healthz
