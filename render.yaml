@@ -8,8 +8,9 @@ services:
       - key: SEASONDIY_DB_PATH
         value: /app/data/seasondiy.db
       - key: SEASONDIY_ALLOWED_ORIGINS
-        value: http://localhost:3000
+        value: "http://localhost:3000"   # لاحقًا نضيف دومين Vercel
     disk:
       name: data
       mountPath: /app/data
       sizeGB: 1
+
