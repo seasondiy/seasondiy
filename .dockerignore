@@ -1,0 +1,11 @@
+﻿!backend/requirements.txt
+!.env
+
+node_modules
+.next
+__pycache__/
+*.pyc
+.venv
+.git
+.gitignore
+.DS_Store
