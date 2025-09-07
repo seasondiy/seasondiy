@@ -1,16 +1,20 @@
 services:
   - type: web
-    name: seasondiy-api
+    name: seasondiy-api             # لو أبقيتِ Web Service القديمة، غيّريه إلى seasondiy-api-bp // change
     env: docker
     dockerfilePath: docker/Dockerfile.backend
     healthCheckPath: /healthz
+    autoDeploy: true
+    plan: free
     envVars:
       - key: SEASONDIY_DB_PATH
         value: /app/data/seasondiy.db
       - key: SEASONDIY_ALLOWED_ORIGINS
-        value: "http://localhost:3000"   # لاحقًا نضيف دومين Vercel
+        value: https://seasondiy-v.vercel.app,http://localhost:3000
     disk:
       name: data
       mountPath: /app/data
+      sizeGB: 1
+
       sizeGB: 1
 
