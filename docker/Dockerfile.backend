@@ -1,27 +1,20 @@
 # docker/Dockerfile.backend
 FROM python:3.11-slim
-
 WORKDIR /app
 
-# أدوات نظام ضرورية للبناء ومعالجة الصور + curl لفحص الصحة  // change
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl build-essential \
     libglib2.0-0 libgl1 \
     libjpeg62-turbo-dev zlib1g-dev libpng-dev libtiff5 libopenjp2-7 \
  && rm -rf /var/lib/apt/lists/*
 
-# انسخي كود الباك ومتطلبات بايثون
 COPY backend/ /app/
-# لو ملف المتطلبات اسمه requirements.txt داخل backend/ فسيصبح /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# المنفذ (Render يمرره وقت التشغيل)
 ENV PORT=8000
 EXPOSE 8000
 
-# فحص الصحة                     // change
 HEALTHCHECK --interval=30s --timeout=3s --start-period=20s --retries=3 \
   CMD curl -fsS "http://localhost:${PORT}/healthz" || exit 1
 
-# تشغيل Uvicorn على ${PORT}    // change
 CMD ["sh","-c","uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
