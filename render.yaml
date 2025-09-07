@@ -3,7 +3,7 @@ services:
     name: seasondiy-api
     env: docker
     rootDir: .
-    dockerfilePath: docker/dockerfile.backend
+    dockerfilePath: docker/Dockerfile.backend
     healthCheckPath: /healthz
     autoDeploy: true
     plan: free
