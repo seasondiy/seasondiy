@@ -2,9 +2,10 @@ services:
   - type: web
     name: seasondiy-api
     env: docker
-    rootDir: .                     # <-- مهم: الجذر // change
+    rootDir: .
     dockerfilePath: docker/dockerfile.backend
     healthCheckPath: /healthz
+    autoDeploy: true
     plan: free
     envVars:
       - key: SEASONDIY_DB_PATH
