@@ -1,0 +1,110 @@
+{
+  "bright_spring": {
+    "label_en": "Bright Spring",
+    "label_ar": "ربيع ساطع",
+    "hex": [
+      "#00B3A4", "#00C2DE", "#00AEEF", "#1E90FF",
+      "#29A329", "#7BD389", "#FF6B6B", "#FF8E3C",
+      "#FFB000", "#FFD166", "#E83E8C", "#8A2BE2"
+    ]
+  },
+  "warm_spring": {
+    "label_en": "Warm Spring",
+    "label_ar": "ربيع دافئ",
+    "hex": [
+      "#C17F00", "#E39A27", "#F4B400", "#FFD166",
+      "#FF6F61", "#E4572E", "#1CA48D", "#2E8B57",
+      "#7FB800", "#00A676", "#C77DFF", "#2F6F97"
+    ]
+  },
+  "light_spring": {
+    "label_en": "Light Spring",
+    "label_ar": "ربيع فاتح",
+    "hex": [
+      "#FFE2A8", "#FFD6C2", "#FFB3C1", "#EBD3FF",
+      "#CDE7F0", "#B7E4C7", "#D7F5E8", "#F2E9E4",
+      "#FCEFB4", "#C5E1A5", "#B3E5FC", "#D1C4E9"
+    ]
+  },
+  "light_summer": {
+    "label_en": "Light Summer",
+    "label_ar": "صيف فاتح",
+    "hex": [
+      "#E6E6FA", "#FADADD", "#D0E8FF", "#C8E6C9",
+      "#B2DFDB", "#D1C4E9", "#F3E5F5", "#FFF1B5",
+      "#AEC6CF", "#BFD8B8", "#C4C7E7", "#FDE2E4"
+    ]
+  },
+  "cool_summer": {
+    "label_en": "Cool Summer",
+    "label_ar": "صيف بارد",
+    "hex": [
+      "#6B7280", "#64748B", "#7C9CCB", "#5B84B1",
+      "#88B0BF", "#9FA8DA", "#A3B18A", "#9C89B8",
+      "#B48EAD", "#C1C7D0", "#94A3B8", "#8190A5"
+    ]
+  },
+  "soft_summer": {
+    "label_en": "Soft Summer",
+    "label_ar": "صيف ناعم",
+    "hex": [
+      "#8AA1A8", "#7DA1A1", "#7E8FB3", "#9AA7B0",
+      "#A5A58D", "#8D99AE", "#A3A3BA", "#91A3B0",
+      "#9FB7AF", "#B1A7A6", "#B8C0D9", "#A3B18A"
+    ]
+  },
+  "soft_autumn": {
+    "label_en": "Soft Autumn",
+    "label_ar": "خريف ناعم",
+    "hex": [
+      "#B08B62", "#9E7B4F", "#A3A948", "#8F9779",
+      "#A7B49E", "#6F7F72", "#A2683A", "#8C6A5D",
+      "#C1A57B", "#7A8B6A", "#C3B091", "#A67C5B"
+    ]
+  },
+  "warm_autumn": {
+    "label_en": "Warm Autumn",
+    "label_ar": "خريف دافئ",
+    "hex": [
+      "#B5651D", "#C46200", "#D97706", "#E67E22",
+      "#A3A948", "#7F8C00", "#4F772D", "#2C7A7B",
+      "#8C564B", "#6B4226", "#8D5524", "#C19A6B"
+    ]
+  },
+  "deep_autumn": {
+    "label_en": "Deep Autumn",
+    "label_ar": "خريف عميق",
+    "hex": [
+      "#3D2B1F", "#4A3F35", "#5B3A29", "#6C4F3D",
+      "#1F3D2B", "#2F4F4F", "#274E13", "#3D405B",
+      "#8B2E2E", "#7B3F00", "#5E503F", "#4E342E"
+    ]
+  },
+  "deep_winter": {
+    "label_en": "Deep Winter",
+    "label_ar": "شتاء عميق",
+    "hex": [
+      "#0B0B0B", "#111827", "#0B132B", "#1F2937",
+      "#0EA5E9", "#06B6D4", "#10B981", "#22C55E",
+      "#EF4444", "#A21CAF", "#2563EB", "#0F766E"
+    ]
+  },
+  "cool_winter": {
+    "label_en": "Cool Winter",
+    "label_ar": "شتاء بارد",
+    "hex": [
+      "#0F172A", "#1F2937", "#334155", "#60A5FA",
+      "#38BDF8", "#22D3EE", "#34D399", "#A78BFA",
+      "#F472B6", "#F43F5E", "#CE93D8", "#81D4FA"
+    ]
+  },
+  "bright_winter": {
+    "label_en": "Bright Winter",
+    "label_ar": "شتاء ساطع",
+    "hex": [
+      "#00B5FF", "#00E5FF", "#00FFC8", "#22D3EE",
+      "#06B6D4", "#14B8A6", "#10B981", "#7C3AED",
+      "#EC4899", "#EF4444", "#F59E0B", "#2563EB"
+    ]
+  }
+}

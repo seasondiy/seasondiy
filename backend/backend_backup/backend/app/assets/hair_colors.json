@@ -1,0 +1,14 @@
+{
+  "bright_spring": ["Honey Blonde", "Warm Golden Blonde", "Light Copper", "Strawberry Blonde", "Light Warm Brown"],
+  "warm_spring": ["Golden Blonde", "Butterscotch", "Warm Caramel", "Copper", "Warm Chestnut"],
+  "light_spring": ["Light Golden Blonde", "Pale Strawberry Blonde", "Champagne Blonde", "Soft Warm Brown"],
+  "light_summer": ["Ash Blonde", "Cool Beige Blonde", "Platinum with Toned Ash", "Soft Cool Brown"],
+  "cool_summer": ["Ash Brown", "Cool Medium Brown", "Dark Ash Blonde", "Soft Espresso"],
+  "soft_summer": ["Mushroom Brown", "Taupe Brown", "Soft Ash Brown", "Muted Rose Brown"],
+  "soft_autumn": ["Soft Auburn", "Hazel Brown", "Warm Mushroom Brown", "Muted Copper Brown"],
+  "warm_autumn": ["Copper", "Cinnamon", "Golden Brown", "Chestnut", "Warm Espresso"],
+  "deep_autumn": ["Deep Auburn", "Mahogany Brown", "Dark Chocolate", "Warm Espresso"],
+  "deep_winter": ["Blue-black", "Cool Espresso", "Deep Plum Black", "Cool Dark Brown"],
+  "cool_winter": ["Natural Black", "Blue-black", "Ash Brown (dark)", "Cool Espresso"],
+  "bright_winter": ["Natural Black with cool highlights", "Blue-black", "Icy Espresso", "Cool Brown with sheen"]
+}
