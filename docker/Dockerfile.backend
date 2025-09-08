@@ -1,23 +1,28 @@
-﻿FROM python:3.11-slim
+﻿# ---------- Base ----------
+FROM python:3.11-slim
+
 WORKDIR /app
 
-# مكتبات تشغيل خفيفة + curl للـ healthcheck
+# System deps for Pillow/OpenCV minimal (بدون حزم نادرة)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl libglib2.0-0 libgl1 libsm6 libxext6 libxrender1 \
+    build-essential curl \
+    libglib2.0-0 libgl1 \
+    libjpeg62-turbo libpng16-16 libtiff5 libopenjp2-7 \
  && rm -rf /var/lib/apt/lists/*
 
-# انسخ المتطلبات إلى WORKDIR وثبّتها
-COPY backend/requirements.txt ./requirements.txt
+# ---------- Copy backend ----------
+# انسخي مجلد backend كله لتفادي مشاكل المسارات
+COPY backend /app/backend
+
+# ---------- Python deps ----------
 RUN python -m pip install --upgrade pip \
- && pip install --no-cache-dir -r ./requirements.txt
+ && pip install --no-cache-dir -r /app/backend/requirements.txt
 
-# انسخ بقية كود الباك
-COPY backend/ /app/
-
+# ---------- Health & Run ----------
 ENV PORT=8000
 EXPOSE 8000
-
 HEALTHCHECK --interval=30s --timeout=3s --start-period=20s --retries=3 \
   CMD curl -fsS "http://localhost:${PORT}/healthz" || exit 1
 
-CMD ["sh","-c","uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
+# شغّل FastAPI (لاحظ المسار الجديد backend.app.main:app)
+CMD ["sh","-c","uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT}"]

@@ -2,7 +2,7 @@ services:
   - type: web
     name: seasondiy-api
     env: docker
-    rootDir: .
+    rootDir: .                     # IMPORTANT
     dockerfilePath: docker/Dockerfile.backend
     healthCheckPath: /healthz
     autoDeploy: true
@@ -11,7 +11,7 @@ services:
       - key: SEASONDIY_DB_PATH
         value: /app/data/seasondiy.db
       - key: SEASONDIY_ALLOWED_ORIGINS
-        value: https://seasondiy-v.vercel.app,http://localhost:3000
+        value: https://seasondiy-v.vercel.app,http://localhost:3000  # غيّري الدومين لو اسم مشروعك مختلف
     disk:
       name: data
       mountPath: /app/data
