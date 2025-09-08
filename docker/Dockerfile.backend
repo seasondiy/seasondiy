@@ -1,16 +1,19 @@
-﻿FROM python:3.11-slim
+﻿# docker/Dockerfile.backend
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# libs تشغيل خفيفة + curl للـ healthcheck
+# حزم تشغيل خفيفة تكفي لـ opencv/pillow + curl للـ healthcheck
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl libglib2.0-0 libgl1 libsm6 libxext6 libxrender1 \
  && rm -rf /var/lib/apt/lists/*
 
-# انسخ المتطلبات أولاً لتثبيتها ثم بقية الكود
-COPY backend/requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+# انسخي المتطلبات إلى نفس الـ WORKDIR ثم ثبّتيها
+COPY backend/requirements.txt ./requirements.txt
+RUN python -m pip install --upgrade pip \
+ && pip install --no-cache-dir -r ./requirements.txt
 
+# بعد نجاح التثبيت انسخي بقية كود الباك
 COPY backend/ /app/
 
 ENV PORT=8000

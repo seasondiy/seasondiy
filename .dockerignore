@@ -1,11 +1,17 @@
-﻿!backend/requirements.txt
+﻿# لا تمنع ملف المتطلبات
+!backend/requirements.txt
 !.env
 
+# Node
 node_modules
 .next
+
+# Python
 __pycache__/
 *.pyc
 .venv
+
+# Git/OS
 .git
 .gitignore
 .DS_Store
