@@ -1,13 +1,13 @@
-﻿!backend/requirements.txt
-!.env
-
-node_modules
-.next
-
+﻿.git
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.env
 .venv
-
-.git
-.gitignore
-.DS_Store
+venv/
+node_modules/
+.next/
+frontend/.next
+frontend/node_modules
+# keep backend/ and docker/

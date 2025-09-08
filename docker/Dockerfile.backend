@@ -1,38 +1,27 @@
-﻿# change: استخدمنا bookworm وحدّثنا قائمة الحِزم
-FROM python:3.11-slim-bookworm
-
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
-    DEBIAN_FRONTEND=noninteractive \
-    PORT=8000
+﻿# docker/Dockerfile.backend
+# مبسّط ومتوافق مع Render + Python 3.11
+FROM python:3.11-slim
 
 WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PORT=8000
 
-# change: حِزم نظام صحيحة لـ Debian bookworm لدعم Pillow/OpenCV
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    curl \
-    libglib2.0-0 \
-    libgl1 \
-    libjpeg62-turbo \
-    zlib1g \
-    libpng16-16 \
-    libtiff6 \
-    libopenjp2-7 \
-  && rm -rf /var/lib/apt/lists/*
+# نثبت curl فقط (لا نحتاج libtiff/libjpeg… لأننا نستخدم wheels جاهزة)
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# ثبّت المتطلبات
+# متطلبات البايثون
 COPY backend/requirements.txt /tmp/requirements.txt
 RUN python -m pip install --upgrade pip \
  && pip install --no-cache-dir -r /tmp/requirements.txt
 
-# انسخ تطبيق الباك-إند
+# كود التطبيق
 COPY backend /app
 
-# فحص صحّة
-HEALTHCHECK --interval=30s --timeout=3s --start-period=20s --retries=3 \
+# Healthcheck وفتح المنفذ
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=3s --start-period=15s --retries=3 \
   CMD curl -fsS "http://localhost:${PORT}/healthz" || exit 1
 
-EXPOSE 8000
 CMD ["sh","-c","uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
